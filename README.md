@@ -1,2 +1,2 @@
-# battleship
-Battleship C++
+# Battleship
+C++ Command Line Battleship
