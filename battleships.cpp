@@ -17,24 +17,13 @@ int main()
 	string lose = "You have lost.";
 	//Initialising
 	int bxpos, bypos, cxpos, cypos, dxpos, dypos, sxpos, sypos; 
-	char y0[10], y1[10], y2[10], y3[10], y4[10], y5[10], y6[10], y7[10], y8[10], y9[10];
-	for (int i = 0; i < 10, i--;) {
-		y0[i] = ' ';
-		y1[i] = ' ';
-		y2[i] = ' ';
-		y3[i] = ' ';
-		y4[i] = ' ';
-		y5[i] = ' ';
-		y6[i] = ' ';
-		y7[i] = ' ';
-		y8[i] = ' ';
-		y9[i] = ' ';
-	}
+	char bxposc, byposc, cxposc, cyposc, dxposc, dyposc, sxposc, syposc;
+	char y0[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y1[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y2[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y3[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y4[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y5[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y6[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y7[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y8[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' }, y9[10]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ' };
+	string battleship[4]{ " ", " ", " ", " " }, cruiser[3]{ " "," "," " }, destroyer[2]{ " "," " }, submarine[1]{ " " };
 	cout << y0[1] << endl;
 	char ship;
 	string shipinput;
 	int rotate = 0;
-
 	int xinput = 0;
 	int yinput = 0;
 	//Game Begin
@@ -167,7 +156,56 @@ int main()
 	if (ship == 'B') {
 		if ((rotate == 0 && yinput > 2) || (rotate == 1 && xinput < 7)) {
 			bxpos = xinput;
-			bypos = yinput;
+			bypos = yinput + 1;
+			if (bxpos == 0) {
+				bxposc = 'A';
+			}
+			else if (bxpos == 1) {
+				bxposc = 'B';
+			}
+			else if (bxpos == 2) {
+				bxposc = 'C';
+			}
+			else if (bxpos == 3) {
+				bxposc = 'D';
+			}
+			else if (bxpos == 4) {
+				bxposc = 'E';
+			}
+			else if (bxpos == 5) {
+				bxposc = 'F';
+			}
+			else if (bxpos == 6) {
+				bxposc = 'G';
+			}
+			else if (bxpos == 7) {
+				bxposc = 'H';
+			}
+			else if (bxpos == 8) {
+				bxposc = 'I';
+			}
+			else if (bxpos == 9) {
+				bxposc = 'J';
+			}
+			else {
+				cout << "Error in rotate 0 xposc assigning." << endl;
+				return 0;
+			}
+			if (rotate == 0) {
+				battleship[0] = bxposc + bypos;
+				//string test = "a" + " b";
+				//cout << test << endl;
+				battleship[1] = bxposc + bypos--;
+				battleship[2] = bxposc + bypos - 2;
+				battleship[3] = bxposc + bypos - 3;
+			}
+			if (rotate == 1) {
+				battleship[0] = bxposc + bypos;
+				battleship[1] = (static_cast<char>(bxposc + 1)) + bypos;
+				battleship[2] = (static_cast<char>(bxposc + 2)) + bypos;
+				battleship[3] = (static_cast<char>(bxposc + 3)) + bypos;
+				cout << "All values set." << endl;
+			}
 		}
 		else {
 			cout << "Not enough space!" << endl;
